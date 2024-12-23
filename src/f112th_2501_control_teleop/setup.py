@@ -4,7 +4,7 @@ package_name = 'f112th_2501_control_teleop'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='1.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -13,10 +13,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='laxted',
-    maintainer_email='andresfmc223.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='AndresM/DanielC',
+    maintainer_email='andresfmc223@gmail.com/dancorpa@gmail.com',
+    description='F112th|2025-1 mobile robotics class project',
+    license='N/N',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
