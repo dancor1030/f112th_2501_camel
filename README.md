@@ -2,6 +2,5 @@
 
 ## Authors
 
-Andres Munoz
-
-Daniel Correa
+- Andres Munoz
+- Daniel Correa
