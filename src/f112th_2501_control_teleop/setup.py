@@ -1,4 +1,7 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
+
 
 package_name = 'f112th_2501_control_teleop'
 
@@ -10,11 +13,12 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*')))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='AndresM/DanielC',
-    maintainer_email='andresfmc223@gmail.com/dancorpa@gmail.com',
+    maintainer='DanielC',
+    maintainer_email='dancorpa@gmail.com',
     description='F112th|2025-1 mobile robotics class project',
     license='N/N',
     tests_require=['pytest'],

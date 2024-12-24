@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+f112th_sim_2501_camel/__init__.py
+f112th_sim_2501_camel/aeb_brake.py
+f112th_sim_2501_camel.egg-info/PKG-INFO
+f112th_sim_2501_camel.egg-info/SOURCES.txt
+f112th_sim_2501_camel.egg-info/dependency_links.txt
+f112th_sim_2501_camel.egg-info/entry_points.txt
+f112th_sim_2501_camel.egg-info/requires.txt
+f112th_sim_2501_camel.egg-info/top_level.txt
+f112th_sim_2501_camel.egg-info/zip-safe
+resource/f112th_sim_2501_camel
