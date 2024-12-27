@@ -1,0 +1,30 @@
+running develop
+running egg_info
+creating f112th_sim_2501_camel.egg-info
+writing f112th_sim_2501_camel.egg-info/PKG-INFO
+writing dependency_links to f112th_sim_2501_camel.egg-info/dependency_links.txt
+writing entry points to f112th_sim_2501_camel.egg-info/entry_points.txt
+writing requirements to f112th_sim_2501_camel.egg-info/requires.txt
+writing top-level names to f112th_sim_2501_camel.egg-info/top_level.txt
+writing manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+reading manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+writing manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages/f112th-sim-2501-camel.egg-link (link to .)
+Installing aeb_brake script to /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/f112th_sim_2501_camel
+
+Installed /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel
+running symlink_data
+creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index
+creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index
+creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index/packages
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/resource/f112th_sim_2501_camel -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index/packages
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/package.xml -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel
+creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/launch/launch_sim_launch.py -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/launch/robot_description_launch.py -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/description/inertial_macros.xacro -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/description/properties.xacro -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/description/robot_core.xacro -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description
+symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/description/robot.urdf.xacro -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description

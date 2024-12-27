@@ -1,0 +1,19 @@
+[0.982s] Invoking command in '/home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel': PYTHONPATH=/home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/build --no-deps symlink_data
+[1.285s] running develop
+[1.480s] running egg_info
+[1.480s] writing f112th_sim_2501_camel.egg-info/PKG-INFO
+[1.481s] writing dependency_links to f112th_sim_2501_camel.egg-info/dependency_links.txt
+[1.481s] writing entry points to f112th_sim_2501_camel.egg-info/entry_points.txt
+[1.481s] writing requirements to f112th_sim_2501_camel.egg-info/requires.txt
+[1.481s] writing top-level names to f112th_sim_2501_camel.egg-info/top_level.txt
+[1.483s] reading manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+[1.484s] writing manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+[1.486s] running build_ext
+[1.487s] Creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages/f112th-sim-2501-camel.egg-link (link to .)
+[1.488s] Installing aeb_brake script to /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/f112th_sim_2501_camel
+[1.488s] 
+[1.488s] Installed /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel
+[1.488s] running symlink_data
+[1.489s] creating /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/worlds
+[1.489s] symbolically linking /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/worlds/test_map_world.world -> /home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/worlds
+[1.540s] Invoked command in '/home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel' returned '0': PYTHONPATH=/home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/laxted/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/laxted/f112th_2501_camel/build/f112th_sim_2501_camel/build --no-deps symlink_data

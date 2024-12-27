@@ -1,6 +1,11 @@
 package.xml
 setup.cfg
 setup.py
+description/gazebo_control.xacro
+description/inertial_macros.xacro
+description/properties.xacro
+description/robot.urdf.xacro
+description/robot_core.xacro
 f112th_sim_2501_camel/__init__.py
 f112th_sim_2501_camel/aeb_brake.py
 f112th_sim_2501_camel.egg-info/PKG-INFO
@@ -10,4 +15,7 @@ f112th_sim_2501_camel.egg-info/entry_points.txt
 f112th_sim_2501_camel.egg-info/requires.txt
 f112th_sim_2501_camel.egg-info/top_level.txt
 f112th_sim_2501_camel.egg-info/zip-safe
+launch/launch_sim_launch.py
+launch/robot_description_launch.py
 resource/f112th_sim_2501_camel
+worlds/test_map_world.world

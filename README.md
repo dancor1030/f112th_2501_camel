@@ -6,4 +6,4 @@
 - Daniel Correa
 
 ## Useful links
-- [yahboom documentation](http://www.yahboom.net/study/ROS-Driver-Board)
+- [yahboom expansion board documentation](http://www.yahboom.net/study/ROS-Driver-Board)
