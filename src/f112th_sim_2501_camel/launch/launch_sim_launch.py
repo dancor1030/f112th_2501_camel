@@ -25,6 +25,9 @@ def generate_launch_description():
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
 
 
+    gazebo_params_path = os.path.join(
+                  get_package_share_directory(package_name),'config','gazebo_params.yaml')
+
     robot_description_launch = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','robot_description_launch.py'
@@ -35,7 +38,9 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-                    launch_arguments={'world': world_path }.items()
+                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_path }.items()
+                    # launch_arguments={'extra_gazebo_args': '--debug' }.items()
+                    # launch_arguments={'world': world_path }.items()
              )
 
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
@@ -43,12 +48,26 @@ def generate_launch_description():
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'diff_drive'],
                         output='screen')
+    
+	# 	# Launch the Diff_Controller
+    # diff_drive_spawner = Node(
+    #     package='controller_manager', 
+    #     executable='spawner', 
+    #     arguments=['diff_cont'])
+		
+	# 	# Launch the Joint_Broadcaster
+    # joint_broad_spawner = Node(
+    #     package='controller_manager', 
+    #     executable='spawner', 
+    #     arguments=['joint_broad'])
 
     # Launch them all!
-    ld = LaunchDescription([
+    return LaunchDescription([
         robot_description_launch,
         gazebo,
         spawn_entity,
+        # diff_drive_spawner,
+        # joint_broad_spawner,
+
     ])
 
-    return ld

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">   
+
     <!-- Color Definitions -->
     <material name="white">
         <color rgba= "1 1 1 1"/>
@@ -17,6 +18,9 @@
         <color rgba= "0 0 0 1"/>
     </material>
 
+
+
+    <!-- Color Definitions -->
     <gazebo reference="chassis">
         <material>Gazebo/White</material>
     </gazebo>
@@ -33,5 +37,10 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
+    <gazebo reference="caster_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
 
 </robot>
