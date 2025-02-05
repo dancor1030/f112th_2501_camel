@@ -1,7 +1,9 @@
 package.xml
 setup.cfg
 setup.py
+config/aeb_params.yaml
 config/gazebo_params.yaml
+config/mux.yaml
 config/my_controllers.yaml
 description/gazebo_control.xacro
 description/inertial_macros.xacro

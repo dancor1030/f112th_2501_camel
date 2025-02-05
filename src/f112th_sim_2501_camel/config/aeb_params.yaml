@@ -1,0 +1,3 @@
+aeb_brake:
+  ros__parameters:
+    min_time_col: 5

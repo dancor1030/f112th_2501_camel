@@ -1,0 +1,17 @@
+[2.161s] Invoking command in '/root/f112th_2501_camel/build/f112th_2501_control_teleop': PYTHONPATH=/root/f112th_2501_camel/build/f112th_2501_control_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/f112th_2501_control_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/f112th_2501_control_teleop/build --no-deps symlink_data
+[2.699s] running develop
+[3.199s] running egg_info
+[3.199s] writing f112th_2501_control_teleop.egg-info/PKG-INFO
+[3.200s] writing dependency_links to f112th_2501_control_teleop.egg-info/dependency_links.txt
+[3.200s] writing entry points to f112th_2501_control_teleop.egg-info/entry_points.txt
+[3.201s] writing requirements to f112th_2501_control_teleop.egg-info/requires.txt
+[3.201s] writing top-level names to f112th_2501_control_teleop.egg-info/top_level.txt
+[3.205s] reading manifest file 'f112th_2501_control_teleop.egg-info/SOURCES.txt'
+[3.207s] writing manifest file 'f112th_2501_control_teleop.egg-info/SOURCES.txt'
+[3.211s] running build_ext
+[3.211s] Creating /root/f112th_2501_camel/install/f112th_2501_control_teleop/lib/python3.10/site-packages/f112th-2501-control-teleop.egg-link (link to .)
+[3.213s] Installing control_teleop script to /root/f112th_2501_camel/install/f112th_2501_control_teleop/lib/f112th_2501_control_teleop
+[3.215s] 
+[3.216s] Installed /root/f112th_2501_camel/build/f112th_2501_control_teleop
+[3.216s] running symlink_data
+[3.288s] Invoked command in '/root/f112th_2501_camel/build/f112th_2501_control_teleop' returned '0': PYTHONPATH=/root/f112th_2501_camel/build/f112th_2501_control_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/f112th_2501_control_teleop/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/f112th_2501_control_teleop/build --no-deps symlink_data
