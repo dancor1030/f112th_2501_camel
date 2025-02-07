@@ -1,0 +1,48 @@
+[1.018s] Invoking command in '/root/f112th_2501_camel/build/f112th_sim_2501_camel': PYTHONPATH=/root/f112th_2501_camel/build/f112th_sim_2501_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/f112th_sim_2501_camel/build --no-deps symlink_data
+[1.325s] running develop
+[1.502s] running egg_info
+[1.502s] creating f112th_sim_2501_camel.egg-info
+[1.503s] writing f112th_sim_2501_camel.egg-info/PKG-INFO
+[1.503s] writing dependency_links to f112th_sim_2501_camel.egg-info/dependency_links.txt
+[1.503s] writing entry points to f112th_sim_2501_camel.egg-info/entry_points.txt
+[1.504s] writing requirements to f112th_sim_2501_camel.egg-info/requires.txt
+[1.504s] writing top-level names to f112th_sim_2501_camel.egg-info/top_level.txt
+[1.504s] writing manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+[1.505s] reading manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+[1.506s] writing manifest file 'f112th_sim_2501_camel.egg-info/SOURCES.txt'
+[1.508s] running build_ext
+[1.508s] Creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages/f112th-sim-2501-camel.egg-link (link to .)
+[1.509s] Installing aeb_brake script to /root/f112th_2501_camel/install/f112th_sim_2501_camel/lib/f112th_sim_2501_camel
+[1.510s] 
+[1.510s] Installed /root/f112th_2501_camel/build/f112th_sim_2501_camel
+[1.510s] running symlink_data
+[1.511s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index
+[1.511s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index
+[1.511s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index/packages
+[1.512s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/resource/f112th_sim_2501_camel -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/ament_index/resource_index/packages
+[1.512s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/package.xml -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel
+[1.512s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+[1.512s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/launch/robot_description_launch.py -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+[1.512s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/launch/launch_sim_launch.py -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/launch
+[1.513s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description
+[1.513s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.513s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/inertial_macros.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.514s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/gazebo_control.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.514s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/robot_core.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.515s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/properties.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.515s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/lidar.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.515s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/ros2_control.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.516s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/diff_drive/robot.urdf.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/diff_drive
+[1.516s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.517s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/ack_drive/inertial_macros.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.517s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/ack_drive/bot_base.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.517s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/ack_drive/gz_ackermann_core.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.518s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/ack_drive/lidar.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.518s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/description/ack_drive/robot.urdf.xacro -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/description/ack_drive
+[1.519s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/worlds
+[1.519s] creating /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/config
+[1.520s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/config/gazebo_params.yaml -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/config
+[1.520s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/config/mux.yaml -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/config
+[1.521s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/config/aeb_params.yaml -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/config
+[1.521s] symbolically linking /root/f112th_2501_camel/build/f112th_sim_2501_camel/config/my_controllers.yaml -> /root/f112th_2501_camel/install/f112th_sim_2501_camel/share/f112th_sim_2501_camel/config
+[1.566s] Invoked command in '/root/f112th_2501_camel/build/f112th_sim_2501_camel' returned '0': PYTHONPATH=/root/f112th_2501_camel/build/f112th_sim_2501_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/f112th_sim_2501_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/f112th_sim_2501_camel/build --no-deps symlink_data
