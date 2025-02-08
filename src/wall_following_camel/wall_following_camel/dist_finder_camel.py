@@ -8,17 +8,17 @@ import numpy as np
 
 class Distance_finder(Node):
     def __init__(self):
-        super().__init__("Distance_finder")
+        super().__init__("distance_finder")
         self.lidar_sub = self.create_subscription(LaserScan, "/scan", self.__lidar_callback,10)
         self.car_pub = self.create_publisher(Float32MultiArray,"/car_info",10)
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('angle_between', 20)
+                ('angle_between_rays', 20)
                 # ! different param inputs from yaml with defailut
             ]
         )
-        self.angle_between_rays = self.get_parameter('angle_between').get_parameter_value().integer_value
+        self.angle_between_rays = self.get_parameter('angle_between_rays').get_parameter_value().integer_value
 
 
     def __lidar_callback(self, msg):
@@ -32,7 +32,7 @@ class Distance_finder(Node):
         self.diagonal_ray = self.__get_diagonal_ray(msg)
 
 
-        ic(self.horizontal_ray , self.diagonal_ray)
+        ic(self.horizontal_ray , self.diagonal_ray, self.angle_between_rays)
 
         self.car_params = self.__get_car_params(self.horizontal_ray, self.diagonal_ray,  angle_increment)
 

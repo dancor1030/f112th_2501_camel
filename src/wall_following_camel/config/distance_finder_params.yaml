@@ -1,0 +1,3 @@
+distance_finder:
+  ros__parameters:
+    angle_between_rays : 45
