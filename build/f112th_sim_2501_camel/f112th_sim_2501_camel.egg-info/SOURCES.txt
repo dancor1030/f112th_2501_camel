@@ -30,3 +30,4 @@ f112th_sim_2501_camel.egg-info/zip-safe
 launch/launch_sim_launch.py
 launch/robot_description_launch.py
 resource/f112th_sim_2501_camel
+worlds/map

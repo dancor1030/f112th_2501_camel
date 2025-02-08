@@ -10,37 +10,37 @@ class Distance_finder(Node):
     def __init__(self):
         super().__init__("Distance_finder")
         self.lidar_sub = self.create_subscription(LaserScan, "/scan", self.__lidar_callback,10)
-        self.emergency_pub = self.create_publisher(Float32MultiArray,"/wall_distance",10)
+        self.car_pub = self.create_publisher(Float32MultiArray,"/car_info",10)
         self.declare_parameters(
             namespace='',
             parameters=[
                 ('angle_between', 45)
                 # ! different param inputs from yaml with defailut
-                # ('bool_param', True),
-                # ('int_param', 42),
-                # ('str_param', 'default'),
-                # ('list_param', [0.0, 0.0]),
-                # ('nested_param.sub_param1', 0),
-                # ('nested_param.sub_param2', 0)
             ]
         )
+        self.angle_between_rays = self.get_parameter('angle_between').get_parameter_value().integer_value
+
 
     def __lidar_callback(self, msg):
+
+        data_array = Float32MultiArray()
         
         self.horizontal_ray =  self.__get_horizontal_ray(msg)
 
         self.diagonal_ray = self.__get_diagonal_ray(msg)
 
-        self.car_params = self.__get_car_params(self.horizontal_ray, self.diagonal_ray, msg.angle_between)
+        self.car_params = self.__get_car_params(self.horizontal_ray, self.diagonal_ray,  self.angle_between_rays)
 
-        self.car_pub.publish(self.car_params) 
+        data_array.data = self.car_params
+
+        self.car_pub.publish(data_array) 
 
 
 
-    def __get_car_params(horizontal_ray : float,  diagonal_ray : float, angle_between : float) -> float:
+    def __get_car_params(self, horizontal_ray : float,  diagonal_ray : float, angle_between : float) -> float:
         angle = np.arctan2((horizontal_ray*np.cos(angle_between) - diagonal_ray), (horizontal_ray*np.sin(angle_between)))
         distance_to_wall = diagonal_ray*np.cos(angle)
-        return [angle, distance_to_wall]
+        return [float(angle), float(distance_to_wall)]
 
 
     def __get_horizontal_ray(self, msg) -> float:
@@ -48,7 +48,7 @@ class Distance_finder(Node):
         return self.horizontal_ray
     
     def __get_diagonal_ray(self, msg) -> float:
-        self.diagonal_ray = msg.ranges[len(msg.ranges)//4 + self.angle_between]
+        self.diagonal_ray = msg.ranges[len(msg.ranges)//4 + self.angle_between_rays]
         return self.diagonal_ray
 
 

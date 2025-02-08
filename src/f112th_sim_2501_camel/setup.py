@@ -17,7 +17,7 @@ setup(
          glob(os.path.join('description/diff_drive', '*.[xacro]*'))),
         (os.path.join('share', package_name, 'description/ack_drive'), 
          glob(os.path.join('description/ack_drive', '*.[xacro]*'))),
-        (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.[world]*'))),
+        (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', 'map'))),
         (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.[yaml]*')))
     ],
     install_requires=['setuptools'],

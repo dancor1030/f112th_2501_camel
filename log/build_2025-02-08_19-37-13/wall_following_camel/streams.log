@@ -1,0 +1,18 @@
+[1.296s] Invoking command in '/root/f112th_2501_camel/build/wall_following_camel': PYTHONPATH=/root/f112th_2501_camel/build/wall_following_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/wall_following_camel/build --no-deps symlink_data
+[1.639s] running develop
+[1.875s] running egg_info
+[1.875s] writing wall_following_camel.egg-info/PKG-INFO
+[1.875s] writing dependency_links to wall_following_camel.egg-info/dependency_links.txt
+[1.875s] writing entry points to wall_following_camel.egg-info/entry_points.txt
+[1.875s] writing requirements to wall_following_camel.egg-info/requires.txt
+[1.876s] writing top-level names to wall_following_camel.egg-info/top_level.txt
+[1.877s] reading manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+[1.878s] writing manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+[1.879s] running build_ext
+[1.879s] Creating /root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages/wall-following-camel.egg-link (link to .)
+[1.880s] Installing control_camel script to /root/f112th_2501_camel/install/wall_following_camel/lib/wall_following_camel
+[1.880s] Installing dist_camel script to /root/f112th_2501_camel/install/wall_following_camel/lib/wall_following_camel
+[1.881s] 
+[1.881s] Installed /root/f112th_2501_camel/build/wall_following_camel
+[1.882s] running symlink_data
+[1.918s] Invoked command in '/root/f112th_2501_camel/build/wall_following_camel' returned '0': PYTHONPATH=/root/f112th_2501_camel/build/wall_following_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/wall_following_camel/build --no-deps symlink_data
