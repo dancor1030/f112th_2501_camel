@@ -14,7 +14,7 @@ class Distance_finder(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('angle_between', 45)
+                ('angle_between', 20)
                 # ! different param inputs from yaml with defailut
             ]
         )
@@ -23,13 +23,18 @@ class Distance_finder(Node):
 
     def __lidar_callback(self, msg):
 
+        angle_increment = self.angle_between_rays*msg.angle_increment
+
         data_array = Float32MultiArray()
         
         self.horizontal_ray =  self.__get_horizontal_ray(msg)
 
         self.diagonal_ray = self.__get_diagonal_ray(msg)
 
-        self.car_params = self.__get_car_params(self.horizontal_ray, self.diagonal_ray,  self.angle_between_rays)
+
+        ic(self.horizontal_ray , self.diagonal_ray)
+
+        self.car_params = self.__get_car_params(self.horizontal_ray, self.diagonal_ray,  angle_increment)
 
         data_array.data = self.car_params
 
@@ -38,9 +43,9 @@ class Distance_finder(Node):
 
 
     def __get_car_params(self, horizontal_ray : float,  diagonal_ray : float, angle_between : float) -> float:
-        angle = np.arctan2((horizontal_ray*np.cos(angle_between) - diagonal_ray), (horizontal_ray*np.sin(angle_between)))
-        distance_to_wall = diagonal_ray*np.cos(angle)
-        return [float(angle), float(distance_to_wall)]
+        angle = np.arctan2((diagonal_ray*np.cos(angle_between) - horizontal_ray), (diagonal_ray*np.sin(angle_between)))
+        distance_to_wall = horizontal_ray*np.cos(angle)
+        return [angle, distance_to_wall]
 
 
     def __get_horizontal_ray(self, msg) -> float:
