@@ -1,9 +1,0 @@
-source;share/f112th_2501_control_teleop/hook/pythonpath.ps1
-source;share/f112th_2501_control_teleop/hook/pythonpath.dsv
-source;share/f112th_2501_control_teleop/hook/pythonpath.sh
-source;share/f112th_2501_control_teleop/hook/ament_prefix_path.ps1
-source;share/f112th_2501_control_teleop/hook/ament_prefix_path.dsv
-source;share/f112th_2501_control_teleop/hook/ament_prefix_path.sh
-source;../../build/f112th_2501_control_teleop/share/f112th_2501_control_teleop/hook/pythonpath_develop.ps1
-source;../../build/f112th_2501_control_teleop/share/f112th_2501_control_teleop/hook/pythonpath_develop.dsv
-source;../../build/f112th_2501_control_teleop/share/f112th_2501_control_teleop/hook/pythonpath_develop.sh

@@ -1,3 +1,0 @@
-[console_scripts]
-aeb_brake = f112th_sim_2501_camel.aeb_brake:main
-
