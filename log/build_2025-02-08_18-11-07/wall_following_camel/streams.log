@@ -1,0 +1,24 @@
+[1.750s] Invoking command in '/root/f112th_2501_camel/build/wall_following_camel': PYTHONPATH=/root/f112th_2501_camel/build/wall_following_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/wall_following_camel/build --no-deps symlink_data
+[2.095s] running develop
+[2.301s] running egg_info
+[2.301s] creating wall_following_camel.egg-info
+[2.302s] writing wall_following_camel.egg-info/PKG-INFO
+[2.302s] writing dependency_links to wall_following_camel.egg-info/dependency_links.txt
+[2.302s] writing entry points to wall_following_camel.egg-info/entry_points.txt
+[2.303s] writing requirements to wall_following_camel.egg-info/requires.txt
+[2.303s] writing top-level names to wall_following_camel.egg-info/top_level.txt
+[2.303s] writing manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+[2.306s] reading manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+[2.308s] writing manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+[2.310s] running build_ext
+[2.311s] Creating /root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages/wall-following-camel.egg-link (link to .)
+[2.313s] Installing control_camel script to /root/f112th_2501_camel/install/wall_following_camel/lib/wall_following_camel
+[2.314s] 
+[2.314s] Installed /root/f112th_2501_camel/build/wall_following_camel
+[2.314s] running symlink_data
+[2.315s] creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index
+[2.315s] creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index
+[2.315s] creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index/packages
+[2.316s] symbolically linking /root/f112th_2501_camel/build/wall_following_camel/resource/wall_following_camel -> /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index/packages
+[2.316s] symbolically linking /root/f112th_2501_camel/build/wall_following_camel/package.xml -> /root/f112th_2501_camel/install/wall_following_camel/share/wall_following_camel
+[2.364s] Invoked command in '/root/f112th_2501_camel/build/wall_following_camel' returned '0': PYTHONPATH=/root/f112th_2501_camel/build/wall_following_camel/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /root/f112th_2501_camel/build/wall_following_camel/build --no-deps symlink_data

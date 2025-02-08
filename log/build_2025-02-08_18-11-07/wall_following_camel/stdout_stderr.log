@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating wall_following_camel.egg-info
+writing wall_following_camel.egg-info/PKG-INFO
+writing dependency_links to wall_following_camel.egg-info/dependency_links.txt
+writing entry points to wall_following_camel.egg-info/entry_points.txt
+writing requirements to wall_following_camel.egg-info/requires.txt
+writing top-level names to wall_following_camel.egg-info/top_level.txt
+writing manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+reading manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+writing manifest file 'wall_following_camel.egg-info/SOURCES.txt'
+running build_ext
+Creating /root/f112th_2501_camel/install/wall_following_camel/lib/python3.10/site-packages/wall-following-camel.egg-link (link to .)
+Installing control_camel script to /root/f112th_2501_camel/install/wall_following_camel/lib/wall_following_camel
+
+Installed /root/f112th_2501_camel/build/wall_following_camel
+running symlink_data
+creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index
+creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index
+creating /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index/packages
+symbolically linking /root/f112th_2501_camel/build/wall_following_camel/resource/wall_following_camel -> /root/f112th_2501_camel/install/wall_following_camel/share/ament_index/resource_index/packages
+symbolically linking /root/f112th_2501_camel/build/wall_following_camel/package.xml -> /root/f112th_2501_camel/install/wall_following_camel/share/wall_following_camel

@@ -13,3 +13,7 @@ twist_mux:
         topic   : cmd_vel_emerg
         timeout : 0.5
         priority: 100
+      emergency: 
+        topic   : cmd_vel_cont
+        timeout : 0.5
+        priority: 100
