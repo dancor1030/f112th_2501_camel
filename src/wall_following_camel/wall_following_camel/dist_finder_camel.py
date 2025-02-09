@@ -43,9 +43,9 @@ class Distance_finder(Node):
 
 
     def __get_car_params(self, horizontal_ray : float,  diagonal_ray : float, angle_between : float) -> float:
-        angle = np.arctan2((diagonal_ray*np.cos(angle_between) - horizontal_ray), (diagonal_ray*np.sin(angle_between)))
-        distance_to_wall = horizontal_ray*np.cos(angle)
-        return [angle, distance_to_wall]
+        alpha = np.arctan2((diagonal_ray*np.cos(angle_between) - horizontal_ray), (diagonal_ray*np.sin(angle_between)))
+        distance_to_wall = horizontal_ray*np.cos(alpha)
+        return [alpha, distance_to_wall]
 
 
     def __get_horizontal_ray(self, msg) -> float:

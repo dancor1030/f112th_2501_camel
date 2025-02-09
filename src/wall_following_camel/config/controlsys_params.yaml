@@ -1,0 +1,7 @@
+wall_follower_control:
+  ros__parameters:
+    P : 1.0
+    I : 1.0
+    D : 1.0
+    Ts : 0.1
+    setpoint : 0.0
