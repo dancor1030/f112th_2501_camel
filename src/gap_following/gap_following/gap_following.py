@@ -72,7 +72,6 @@ class GapFollower(Node):
         action = self.__get_control_action(gap_anlge_rad)
         self.control_action.publish(action)
 
-
     def __get_control_action(self, gap_anlge_rad : float) -> Twist:
         error = np.pi - gap_anlge_rad
         dt = tm.time() - self.prev_time
@@ -84,14 +83,12 @@ class GapFollower(Node):
         self.prev_time = tm.time()
         return action
 
-
     def __get_gap_angle(self, best_gap: float, init_index : int) -> float:
         aqumulated_sum = 0
         for ray in best_gap:
             aqumulated_sum += ray[1]
         mean_indx = aqumulated_sum//len(best_gap) 
         return (np.pi/180)*(init_index + mean_indx) , (init_index + mean_indx)
-
 
     def __get_best_gap(self, interesting_gaps : float, k : float) -> float:
         greatest_weight_index = 0
@@ -115,8 +112,6 @@ class GapFollower(Node):
         greatest_weight = interesting_gaps[greatest_weight_index]
         ic(greatest_weight)
         return greatest_weight
-
-
 
     def __find_gaps(self, relevant_rays : float) -> float:
         corner_rays = self.__find_corners(relevant_rays)
@@ -144,17 +139,13 @@ class GapFollower(Node):
         # ! ----------------------------------------------------------------------------
         return gaps
 
-
-
     def __supress_rays(self, corner_ray : float, relevant_rays : float) -> float:
         # ! Remember, [index, raylenght]
         supression_angle = np.arctan2(self.car_width,corner_ray[1])
         index_supp = supression_angle//(np.pi/180) 
         for ii in range(int(2*index_supp//2 + 1)):
             if (corner_ray[0] - ii) > 0. and (corner_ray[0] - ii) < len(relevant_rays):
-                relevant_rays[corner_ray[0] - ii] = 0.
-            
-
+                relevant_rays[corner_ray[0] - ii] = 0.        
 
     def __find_corners(self, relevant_rays : float) -> float:
         prev_ray = relevant_rays[0]
@@ -165,11 +156,8 @@ class GapFollower(Node):
             prev_ray = relevant_rays[ii]
         return gap_rays
 
-
-
     def __get_cone_view(self, msg : LaserScan) -> float:
         return  180 - self.frontal_rays_number//2 , msg.ranges[180 - self.frontal_rays_number//2 : 180 + self.frontal_rays_number//2]
-    
 
     def __floor_nearest(self, visible_rays : float , thresh : float) -> float:
         return [self.__floor_ray(x, thresh) for x in visible_rays]
@@ -179,7 +167,6 @@ class GapFollower(Node):
             return 0.
         else:
             return ray
-
 
 def main():
     ic('Im alive')
