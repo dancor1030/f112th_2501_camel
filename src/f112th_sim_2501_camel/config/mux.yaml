@@ -4,16 +4,16 @@ twist_mux:
       teleop:
         topic   : cmd_vel_teleop
         timeout : 0.5
-        priority: 10
+        priority: 1
       joystick: 
         topic   : cmd_vel_joy
         timeout : 0.5
-        priority: 100
+        priority: 5
       emergency: 
         topic   : cmd_vel_emerg
         timeout : 0.5
         priority: 100
-      emergency: 
+      auton: 
         topic   : cmd_vel_cont
         timeout : 0.5
-        priority: 100
+        priority: 50

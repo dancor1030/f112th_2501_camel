@@ -57,11 +57,15 @@ def generate_launch_description():
                     remappings=[('/cmd_vel_out','/cmd_vel')]
     )
     
+    dist_finder = Node(package='wall_following_camel',
+                       executable='dist_finder_camel')
+
     # Launch them all!
     return LaunchDescription([
         robot_description_launch,
         gazebo,
         spawn_entity,
+        dist_finder,
         twist_mux_node
     ])
 

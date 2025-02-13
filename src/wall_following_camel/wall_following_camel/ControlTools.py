@@ -9,7 +9,7 @@ class ControllerPID():
     def setpoint(self, sp=0):
         self.sp = sp
 
-    # discrete control law
+    ## discrete control law
     def get_discr_u(self, y): # y is the measured variable
         # compute error and control signal
         self.error[0] = self.sp - y
@@ -64,5 +64,5 @@ class Morodico(): # MObile RObotics DIfferential drive COntrol algorithm
     
     def angvel(self):
         pass
-
+#? ------------------------------------------------------------------------------------------------------
 
