@@ -25,7 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'control_camel = wall_following_camel.control_camel:main',
-            'dist_camel = wall_following_camel.dist_finder_camel:main'
+            'dist_finder_camel = wall_following_camel.dist_finder_camel:main'
         ],
     },
 )
