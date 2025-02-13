@@ -121,7 +121,7 @@ class GapFollower(Node):
 
     def __recognize_gaps(self, relevant_rays : float) -> float:
         #! This section was made with the help of deepseek, it was late at night, got lazy
-        # ! eatherway, the final result was almost entirely made by me, but i have to be hornest :/
+        # ! either way, the final result was almost entirely made by me, but i have to be honest :/
         # ! -----------------------------------------------------------------------------
         gaps = []
         current_gap = []

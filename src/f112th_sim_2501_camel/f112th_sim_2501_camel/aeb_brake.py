@@ -28,8 +28,12 @@ class Braking_system(Node):
                 # ('nested_param.sub_param2', 0)
             ]
         )
+        #! DANIEL WROTE: ====================================================
+        #! Dont you think it should publish a negative value on linear.x ? So IRL it acts as a brake and inertia doesnt let the car crash onto the wall       
+        #! why publishing in .linear.y ? lmao
         self.emergency_msg.linear.x = 0.
-        self.emergency_msg.linear.y = 0.        
+        self.emergency_msg.linear.y = 0.
+        #! ==================================================================
 
     def lidar_callback(self, data):
 
