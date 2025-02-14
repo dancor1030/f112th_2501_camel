@@ -18,7 +18,7 @@ class Braking_system(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('min_time_col', 2.)
+                ('min_time_col', 10)
                 # ! different param inputs from yaml with defailut
                 # ('bool_param', True),
                 # ('int_param', 42),
@@ -28,7 +28,7 @@ class Braking_system(Node):
                 # ('nested_param.sub_param2', 0)
             ]
         )
-        self.emergency_msg.linear.x = -0.4
+        self.emergency_msg.linear.x = -0.3
         self.emergency_msg.linear.y = 0.        
 
     def lidar_callback(self, data):

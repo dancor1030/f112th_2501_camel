@@ -48,11 +48,11 @@ class ControlSystem(Node):
         # overall controller #? for Rozo's approach ======================
         self.controller = CPID(P, I, D, Ts)
         self.controller.setpoint(0) #! setpoint 0 because we want both 'y' and 'theta' (or alpha) to get to zero
-        self.Klin = 1.0
-        self.Kang = 5.0
+        self.Klin = 4.0
+        self.Kang = 1.0
         #? ===============================================================
 
-        self.L = 1.5 #* forward distance travel (refer to Rozo slides) useful for both approaches
+        self.L = 3 #* forward distance travel (refer to Rozo slides) useful for both approaches
 
 
 
@@ -76,7 +76,7 @@ class ControlSystem(Node):
         #? Rozo's proposal (useful for ackermann's drive) ======================================================
         # uses 'controller' controller
         if isinf(self.wall_dist):
-            self.wall_dist = 13
+            self.wall_dist = 12
         y_coordinate = self.wall_dist - self.dist_setpoint
         self.measured_var = (y_coordinate + self.L*sin(self.alpha))
         angvel = self.controller.get_discr_u(self.measured_var)

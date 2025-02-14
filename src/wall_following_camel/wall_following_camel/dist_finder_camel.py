@@ -14,8 +14,8 @@ class Distance_finder(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('angle_between_rays', 20)
-                # ! different param inputs from yaml with defailut
+                ('angle_between_rays', 65)
+                # ! different param inputs from yaml with default
             ]
         )
         self.angle_between_rays = self.get_parameter('angle_between_rays').get_parameter_value().integer_value
@@ -45,6 +45,7 @@ class Distance_finder(Node):
     def __get_car_params(self, horizontal_ray : float,  diagonal_ray : float, angle_between : float) -> float:
         alpha = np.arctan2((diagonal_ray*np.cos(angle_between) - horizontal_ray), (diagonal_ray*np.sin(angle_between)))
         ic(diagonal_ray)
+        ic(self.angle_between_rays)
         distance_to_wall = horizontal_ray*np.cos(alpha)
         return [alpha, distance_to_wall]
 
