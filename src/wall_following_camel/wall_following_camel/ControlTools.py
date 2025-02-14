@@ -1,3 +1,6 @@
+from time import perf_counter as gettime
+from math import isnan
+
 class ControllerPID():
     def __init__(self, kp, ki, kd, Ts=None): # use Ts in case of discrete controller
         # cont. gains
@@ -15,6 +18,9 @@ class ControllerPID():
         self.error[0] = self.sp - y
         self.uk[0] = self.q0*self.error[0] + self.q1*self.error[1] + self.q2*self.error[2] + self.uk[1]
         
+        if isnan(self.uk[0]):
+            self.uk[0] = 0.0
+
         # update register variables
         self.uk[1] = self.uk[0]
         self.error[1] = self.error[0]
@@ -27,6 +33,9 @@ class ControllerPID():
     # continuous control law
     def get_cont_u(self, y):
         # TODO: develop this method in case the user wants a continuous controller
+        # self.error = self.sp - y
+        # self.u = self.kp*self.error + self.ki*self.integral + self.kd*self.dedt
+        # return self.u
         pass
 
     def update_discr_gains(self):
@@ -50,7 +59,14 @@ class ControllerPID():
         else:
             self.q0 = 0.0
             self.q1 = 0.0
-            self.q2 = 0.0            
+            self.q2 = 0.0           
+
+    ## saturate control law
+    def satur(self, minu, maxu, u):
+        if u < minu: return minu
+        elif u > maxu: return maxu
+        else: return u
+
 
 
 #? SHOULD WE INCLUDE THIS CLASS ? ------------------------------------------------------------------------ 

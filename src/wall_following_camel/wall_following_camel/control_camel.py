@@ -5,7 +5,7 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32MultiArray
 from icecream import ic
 import numpy as np
-from math import sin, cos
+from math import sin, cos, isnan, isinf
 
 import os
 import sys
@@ -24,9 +24,9 @@ class ControlSystem(Node):
         self.declare_parameters(
         namespace='',
         parameters=[
-                ('P', 0.2),
-                ('I', 0.001),                
-                ('D', 0.1),
+                ('P', 0.02),
+                ('I', 0.0001),                
+                ('D', 0.01),
                 ('Ts', 0.01), #! CAREFULLY CALCULATE THIS 'Ts' IF YOU ARE GOING TO USE IT
                 ('dist_setpoint', 1.5)
             ]
@@ -49,10 +49,10 @@ class ControlSystem(Node):
         self.controller = CPID(P, I, D, Ts)
         self.controller.setpoint(0) #! setpoint 0 because we want both 'y' and 'theta' (or alpha) to get to zero
         self.Klin = 1.0
-        self.Kang = 3.0
+        self.Kang = 5.0
         #? ===============================================================
 
-        self.L = 1.0 #* forward distance travel (refer to Rozo slides) useful for both approaches
+        self.L = 1.5 #* forward distance travel (refer to Rozo slides) useful for both approaches
 
 
 
@@ -75,24 +75,35 @@ class ControlSystem(Node):
 
         #? Rozo's proposal (useful for ackermann's drive) ======================================================
         # uses 'controller' controller
+        if isinf(self.wall_dist):
+            self.wall_dist = 13
         y_coordinate = self.wall_dist - self.dist_setpoint
         self.measured_var = (y_coordinate + self.L*sin(self.alpha))
         angvel = self.controller.get_discr_u(self.measured_var)
         linvel = self.Klin/(abs(self.Kang*angvel) + 1) # absolute value of angvel because linvel can never be <= 0.
         #? =====================================================================================================
+        ic(y_coordinate)        
+        ic(self.alpha)        
+        ic(self.measured_var)
+        ic(self.controller.error)
+
 
         msg = Twist()
-        msg.linear.x = linvel
-        msg.angular.z = angvel
-        # print(f'{linvel} | {angvel}')
+        if isnan(linvel) or isnan(angvel):
+            msg.linear.x = 0.0
+            msg.angular.z = 0.0
+        else:
+            msg.linear.x = linvel
+            msg.angular.z = angvel
+
         self.car_pub.publish(msg)        
 
 
 def main():
     ic('Im alive')
     rclpy.init() 
-    braking_system = ControlSystem()
-    rclpy.spin(braking_system)
+    controlsys = ControlSystem()
+    rclpy.spin(controlsys)
     rclpy.shutdown()     
 
 

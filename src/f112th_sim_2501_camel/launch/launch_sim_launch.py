@@ -24,6 +24,7 @@ def generate_launch_description():
     world_file_name = 'map' # <---Change world if necessary (Te estoy viendo usuario 0_0 )
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','mux.yaml')
+    aeb_params = os.path.join(get_package_share_directory(package_name),'config','aeb_params.yaml')
 
 
 
@@ -60,12 +61,17 @@ def generate_launch_description():
     dist_finder = Node(package='wall_following_camel',
                        executable='dist_finder_camel')
 
+    aeb_brake = Node(package='f112th_sim_2501_camel',
+                     executable='aeb_brake',
+                     parameters=[aeb_params])
+
     # Launch them all!
     return LaunchDescription([
         robot_description_launch,
         gazebo,
         spawn_entity,
         dist_finder,
-        twist_mux_node
+        twist_mux_node,
+        aeb_brake
     ])
 

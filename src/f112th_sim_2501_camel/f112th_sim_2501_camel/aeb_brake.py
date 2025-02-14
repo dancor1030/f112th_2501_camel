@@ -28,24 +28,27 @@ class Braking_system(Node):
                 # ('nested_param.sub_param2', 0)
             ]
         )
-        self.emergency_msg.linear.x = 0.
+        self.emergency_msg.linear.x = -0.4
         self.emergency_msg.linear.y = 0.        
 
     def lidar_callback(self, data):
-
+        # ic(data.ranges)
         dt = (data.header.stamp.nanosec - self.prev_time)*10e-9
-        dx =  (data.ranges[180] - self.prev_distance)*10
+        dx =  abs(data.ranges[180] - self.prev_distance)*10
         speed = dx/dt
 
-        time_to_collition = -1*data.ranges[180]/speed
+        time_to_collition = abs(data.ranges[180]/speed)
 
         param = self.get_parameter('min_time_col').get_parameter_value().double_value
 
-        ic("time to collition :", time_to_collition )
-
+        # ic(speed)
+        # ic("time to collition :", time_to_collition )
+        # ic(param > time_to_collition)
         if(param > time_to_collition and time_to_collition > 0):
             self.emergency_pub.publish(self.emergency_msg)
-
+            print('braking!')
+        # else:
+            # pass            
 
         self.prev_distance = data.ranges[180]
         self.prev_time = data.header.stamp.nanosec
