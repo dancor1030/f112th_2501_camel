@@ -107,4 +107,44 @@
 
     </link>
 
+
+
+    <!-- laser_frame -->
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <box size="0.02 0.1 0.1"/>
+            </geometry>¿
+        </visual>
+        <xacro:inertial_box mass="0.01" x="0.02" y="0.1" z="0.1">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="camera_link"/>
+        <origin xyz="0.4 0 0.175" rpy="0 0 0"/> 
+    </joint>
+
+
+    <!-- laser_frame -->
+    <link name="imu_link">
+        <visual>
+            <geometry>
+                <box size="0.02 0.02 0.04"/>
+            </geometry>
+        </visual>
+        <xacro:inertial_box mass="0.02" x="0.2" y="0.02" z="0.04">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="imu_link"/>
+        <origin xyz="0.3 0 0.175" rpy="0 0 0"/> 
+    </joint>
+
+
 </robot>
