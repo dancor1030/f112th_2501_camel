@@ -42,7 +42,7 @@ class GapFollower(Node):
                 ('minimum_object_distance', 3.),
                 ('car_width', 0.8),
                 ('corner_minimal_depht', 1.),
-                # ! different param inputs from yaml with defailut
+                # ! different param inputs from yaml with default
             ]
         )
 
@@ -67,13 +67,13 @@ class GapFollower(Node):
           self.angular_controller.__integral = 0
           return
 
-        gap_anlge_rad, gap_angle_deg = self.__get_gap_angle(best_gap, initial_index)
-        ic(gap_angle_deg, gap_anlge_rad)
-        action = self.__get_control_action(gap_anlge_rad)
+        gap_angle_rad, gap_angle_deg = self.__get_gap_angle(best_gap, initial_index)
+        ic(gap_angle_deg, gap_angle_rad)
+        action = self.__get_control_action(gap_angle_rad)
         self.control_action.publish(action)
 
-    def __get_control_action(self, gap_anlge_rad : float) -> Twist:
-        error = np.pi - gap_anlge_rad
+    def __get_control_action(self, gap_angle_rad : float) -> Twist:
+        error = np.pi - gap_angle_rad
         dt = tm.time() - self.prev_time
         control_action = self.angular_controller.get_control_action(dt, error)
         ic(control_action)
@@ -140,7 +140,7 @@ class GapFollower(Node):
         return gaps
 
     def __supress_rays(self, corner_ray : float, relevant_rays : float) -> float:
-        # ! Remember, [index, raylenght]
+        # ! Remember, [index, raylength]
         supression_angle = np.arctan2(self.car_width,corner_ray[1])
         index_supp = supression_angle//(np.pi/180) 
         for ii in range(int(2*index_supp//2 + 1)):
@@ -171,8 +171,8 @@ class GapFollower(Node):
 def main():
     ic('Im alive')
     rclpy.init()
-    braking_system = GapFollower()
-    rclpy.spin(braking_system)
+    gapfollower_node = GapFollower()
+    rclpy.spin(gapfollower_node)
     rclpy.shutdown()
 
 
