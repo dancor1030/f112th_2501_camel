@@ -21,7 +21,11 @@ def generate_launch_description():
 
     #with the help of https://automaticaddison.com/how-to-load-a-world-file-into-gazebo-ros-2/}
 
-    world_file_name = 'map' # <---Change world if necessary (Te estoy viendo usuario 0_0 )
+    #* ============= CHOOSE MAP ===============
+    world_file_name = 'map'
+    # world_file_name = 'map_no_obs'
+    #* ========================================
+
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
     twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','mux.yaml')
     aeb_params = os.path.join(get_package_share_directory(package_name),'config','aeb_params.yaml')
