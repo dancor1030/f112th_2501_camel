@@ -59,15 +59,14 @@ def generate_launch_description():
     twist_mux_node = Node(package='twist_mux', 
                     executable='twist_mux',
                     parameters=[twist_mux_params,{'use_sim_time': True}],
-                    remappings=[('/cmd_vel_out','/cmd_vel')]
-    )
+                    remappings=[('/cmd_vel_out','/cmd_vel')])
     
     dist_finder = Node(package='wall_following_camel',
                        executable='dist_finder_camel')
 
     aeb_brake = Node(package='f112th_sim_2501_camel',
                      executable='aeb_brake',
-                     parameters=[aeb_params])
+                     parameters=[aeb_params],)
 
     # Launch them all!
     return LaunchDescription([

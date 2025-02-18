@@ -30,6 +30,8 @@ class GapFollower(Node):
         self.control_action = self.create_publisher(Twist,"/cmd_vel_cont",10)
         self.emergency_action = Twist()
         self.emergency_action.angular.z = 0.5
+        self.Klin = 2.5
+        self.Kang = 1.0
         self.prev_time = tm.time()
 
         self.declare_parameters(
@@ -79,7 +81,9 @@ class GapFollower(Node):
         ic(control_action)
         action = Twist()
         action.angular.z = -control_action
-        action.linear.x = 1.
+        linvel = self.Klin/(abs(self.Kang*action.angular.z) + 1)
+        # action.linear.x = 1.7
+        action.linear.x = linvel
         self.prev_time = tm.time()
         return action
 
