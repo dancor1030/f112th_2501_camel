@@ -20,7 +20,7 @@ def generate_launch_description():
     #Create node 
     dist_camel = Node(
         package=package_name,
-        executable='dist_camel',
+        executable='dist_finder_camel',
         parameters=[distance_finder_params]
     )
 

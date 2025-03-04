@@ -19,6 +19,7 @@ setup(
          glob(os.path.join('description/ack_drive', '*.[xacro]*'))),
         (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', 'map'))),
         (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', 'map_no_obs'))),
+        (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', 'trackparcial.world'))),
         (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.[yaml]*')))
     ],
     install_requires=['setuptools'],

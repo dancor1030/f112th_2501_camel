@@ -22,7 +22,8 @@ def generate_launch_description():
     #with the help of https://automaticaddison.com/how-to-load-a-world-file-into-gazebo-ros-2/}
 
     #* ============= CHOOSE MAP ===============
-    world_file_name = 'map'
+    world_file_name = 'trackparcial.world'
+    # world_file_name = 'map'
     # world_file_name = 'map_no_obs'
     #* ========================================
 
