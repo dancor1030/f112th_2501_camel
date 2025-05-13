@@ -22,9 +22,9 @@ def generate_launch_description():
     #with the help of https://automaticaddison.com/how-to-load-a-world-file-into-gazebo-ros-2/}
 
     #* ============= CHOOSE MAP ===============
-    world_file_name = 'trackparcial.world'
+    # world_file_name = 'trackparcial.world'
     # world_file_name = 'map'
-    # world_file_name = 'map_no_obs'
+    world_file_name = 'map_no_obs'
     #* ========================================
 
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
@@ -76,6 +76,6 @@ def generate_launch_description():
         spawn_entity,
         dist_finder,
         twist_mux_node,
-        aeb_brake
+        # aeb_brake
     ])
 

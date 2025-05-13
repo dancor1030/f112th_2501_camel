@@ -21,7 +21,8 @@ def generate_launch_description():
     dist_camel = Node(
         package=package_name,
         executable='dist_finder_camel',
-        parameters=[distance_finder_params]
+        parameters=[distance_finder_params],
+        arguments=['--ros-args', '--log-level', 'DEBUG']
     )
 
 
