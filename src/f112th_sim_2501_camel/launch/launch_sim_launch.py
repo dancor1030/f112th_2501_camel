@@ -76,6 +76,6 @@ def generate_launch_description():
         spawn_entity,
         dist_finder,
         twist_mux_node,
-        # aeb_brake
+        aeb_brake
     ])
 
