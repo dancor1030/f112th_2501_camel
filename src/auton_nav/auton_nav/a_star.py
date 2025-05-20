@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import heapq
 
-expansion_size = 1
+expansion_size = 8
 
 def costmap(data, width, height, resolution):
     data = np.array(data).reshape(height, width)
@@ -44,7 +44,7 @@ class Nav2501HNode(Node):
         self.get_logger().info('nav_2401_hotel_node Started')
 
         self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, 10)
-        self.subs_odom = self.create_subscription(Odometry, '/diff_cont/odom', self.Odom_callback, 10)
+        self.subs_odom = self.create_subscription(Odometry, '/odom', self.Odom_callback, 10)
         self.subs_goalpose = self.create_subscription(PoseStamped, '/goal_pose', self.Goal_Pose_callback, QoSProfile(depth=10))
 
         self.publisher_visual_path = self.create_publisher(Path, '/visual_path', 10)

@@ -24,10 +24,25 @@ from launch_ros.actions import LoadComposableNodes
 from launch_ros.actions import Node
 from launch_ros.descriptions import ComposableNode, ParameterFile
 from nav2_common.launch import RewrittenYaml
-
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import Node
 
 def generate_launch_description():
     # Get the launch directory
+
+    sim_launch_file_path = os.path.join(
+        get_package_share_directory('f112th_sim_2501_camel'),
+        'launch',
+        'launch_sim_launch.py'
+    )
+
+    rviz_config_file = os.path.join(
+        get_package_share_directory('f112th_sim_2501_camel'),
+        'config',
+        'config1.rviz'
+    )
+
     bringup_dir = get_package_share_directory('auton_nav')
 
     namespace = LaunchConfiguration('namespace')
@@ -110,6 +125,13 @@ def generate_launch_description():
     load_nodes = GroupAction(
         condition=IfCondition(PythonExpression(['not ', use_composition])),
         actions=[
+
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(sim_launch_file_path),
+                launch_arguments={
+                    # 'arg_name': 'arg_value'  # optional: pass arguments if needed
+                }.items()
+            ),
             Node(
                 package='nav2_map_server',
                 executable='map_server',
@@ -138,7 +160,15 @@ def generate_launch_description():
                 arguments=['--ros-args', '--log-level', log_level],
                 parameters=[{'use_sim_time': use_sim_time},
                             {'autostart': autostart},
-                            {'node_names': lifecycle_nodes}])
+                            {'node_names': lifecycle_nodes}]),
+            Node(
+                package='rviz2',
+                executable='rviz2',
+                name='rviz2',
+                arguments=['-d', rviz_config_file],
+                output='screen'
+            ),
+            
         ]
     )
 
