@@ -25,7 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'a_star = auton_nav.a_star:main',
-            'pure_pursuit = auton_nav.a_star:main',
+            'pure_pursuit = auton_nav.pure_pursuit:main',
         ],
     },
 )

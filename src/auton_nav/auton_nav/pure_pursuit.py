@@ -5,7 +5,7 @@ from nav_msgs.msg import Odometry, Path
 from ackermann_msgs.msg import AckermannDriveStamped
 from geometry_msgs.msg import Twist
 import math
-import icecream as ic
+from icecream import ic
 
 
 
@@ -21,13 +21,12 @@ class PurePursuit(Node):
     def __init__(self):
         super().__init__('purepursuit')
 
-        # Parameters
-        self.declare_parameter('lookahead_distance', 1.5)
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('lookahead_distance', 45),
-                ('wheelbase', 0.26)
+                ('lookahead_distance', 0.3),
+                # ('wheelbase', 0.26)
+                ('wheelbase', 0.1)
             ]
         )    
 
@@ -35,17 +34,16 @@ class PurePursuit(Node):
         self.LD = self.get_parameter('lookahead_distance').get_parameter_value().double_value
         self.WB = self.get_parameter('wheelbase').get_parameter_value().double_value
         self.max_angle = math.radians(45)
+        self.cmd_pub = self.create_publisher(Twist, '/cmd_vel', 10) #? cmd_pp == command pure pursuit
         ## VARIABLES    
 
-
         # Subscriptions
-        self.create_subscription(Path, '/visual_path', self.path_callback, 10)
+        self.create_subscription(Path, '/path', self.path_callback, 10)
         self.create_subscription(Odometry, '/odom', self.odom_callback, 10)
-
+        self.timer_cmd_vel = self.create_timer(0.1, self.diff_control)
 
         # Publisher
-        self.cmd_pub = self.create_publisher(Twist, '/cmd_pp', 10) #? cmd_pp == command pure pursuit
-
+        self.current_index = 0
 
         # Variables
         self.waypoints = []
@@ -58,9 +56,69 @@ class PurePursuit(Node):
         self.pose = msg.pose.pose
         self.pure_pursuit_control()
 
-    def pure_pursuit_control(self):
+    def diff_control(self):
         if not self.waypoints or self.pose is None:
+            self.get_logger().info("No pose or waypoints available.")
             return
+
+        # Robot pose
+        rx = self.pose.position.x
+        ry = self.pose.position.y
+        yaw = self.get_yaw_from_quaternion(self.pose.orientation)
+
+        # Find goal point
+        goal = None
+        i = 0.
+        for wp in self.waypoints:
+            dx = wp.pose.position.x - rx
+            dy = wp.pose.position.y - ry
+            dist = math.sqrt(dx**2 + dy**2)
+            i += 1.
+
+
+            if dist >= self.LD and dist <= self.LD +0.1 and i > self.current_index:
+                goal = wp.pose
+                break
+
+            if dist < self.LD:
+                self.current_index = i
+
+        if goal is None:
+            self.get_logger().info("No goal found within lookahead distance.")
+            return
+        
+        # Transform goal to robot frame
+        dx = goal.position.x - rx
+        dy = goal.position.y - ry
+        local_x = math.cos(-yaw) * dx - math.sin(-yaw) * dy
+        local_y = math.sin(-yaw) * dx + math.cos(-yaw) * dy
+
+
+        # Avoid division by zero
+        if local_x == 0:
+            self.get_logger().info("Goal is directly behind the robot.")
+            return
+
+        ic(yaw)
+    
+        angular_z = (math.atan2(local_y,local_x))
+
+        ic(angular_z)
+
+        # Publish command
+        drive_msg = Twist()
+        drive_msg.linear.x = 0.4  # Constant linear velocity
+        drive_msg.angular.z = angular_z
+        self.cmd_pub.publish(drive_msg)
+
+    def pure_pursuit_control(self):
+
+        return
+        if not self.waypoints or self.pose is None:
+            print("No pose")
+            return
+        
+        
 
         # Robot pose
         rx = self.pose.position.x
@@ -100,8 +158,8 @@ class PurePursuit(Node):
         # Publish command
         drive_msg = Twist()
         drive_msg.angular.z = steering_angle
-        drive_msg.linar.x = 1.0  # You can set this dynamically
-        self.cmd_pub.publish(drive_msg)
+        drive_msg.linear.x = 0.2  # You can set this dynamically
+        # self.cmd_pub.publish(drive_msg)
 
     def get_yaw_from_quaternion(self, q):
         # Convert quaternion to yaw

@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import OccupancyGrid, Odometry, Path
-from geometry_msgs.msg import PoseStamped, Twist
+from geometry_msgs.msg import PoseStamped, Twist, Pose
 from rclpy.qos import QoSProfile
 import math
 import numpy as np
@@ -46,8 +46,10 @@ class Nav2501HNode(Node):
         self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, 10)
         self.subs_odom = self.create_subscription(Odometry, '/odom', self.Odom_callback, 10)
         self.subs_goalpose = self.create_subscription(PoseStamped, '/goal_pose', self.Goal_Pose_callback, QoSProfile(depth=10))
+        self.path_timer = self.create_timer(0.1, self.path_timer_func)
 
-        self.publisher_visual_path = self.create_publisher(Path, '/visual_path', 10)
+
+        self.publisher_visual_path = self.create_publisher(Path, '/path', 10)
         self.publisher_cmdvel = self.create_publisher(Twist, '/cmd_vel', 10)
 
         self.goal_x = []
@@ -58,6 +60,18 @@ class Nav2501HNode(Node):
         self.yaw = 0
 
         self.map_ready = False
+        self.path_ready = False
+
+        self.path_msg = Path()
+
+    def path_timer_func(self):
+        if self.path_ready:
+            self.publisher_visual_path.publish(self.path_msg)
+
+
+
+
+
 
     def OccGrid_callback(self, msg):
         self.resolution = msg.info.resolution
@@ -88,6 +102,11 @@ class Nav2501HNode(Node):
                 self.get_logger().warn('Map not received yet.')
 
     def get_map(self):
+
+
+
+        
+
         data = costmap(self.map_data, self.width, self.height, self.resolution)
 
         column = int((self.x - self.originX) / self.resolution)
@@ -113,6 +132,9 @@ class Nav2501HNode(Node):
 
         self.ax.plot(column, row, 'o')
         self.build_path(data, row, column)
+
+
+
 
     def distance(self, a, b):
         return np.linalg.norm(np.array(a) - np.array(b))
@@ -166,13 +188,40 @@ class Nav2501HNode(Node):
             self.ax.plot(x, y, '.', markersize=1)
 
             path_coords = [(px * self.resolution + self.originX, py * self.resolution + self.originY) for py, px in path]
+            
+            path_points_msg = []
+
+            for point in path_coords:
+                pose = PoseStamped()
+                
+                pose.header.frame_id = 'map'
+                pose.header.stamp = self.get_clock().now().to_msg()
+
+                pose.pose.position.z = 0.0
+                pose.pose.position.x = point[0]
+                pose.pose.position.y = point[1]
+                path_points_msg.append(pose)
+
+
             self.get_logger().info(f"Path: {path_coords}")
+
+            
 
             self.ax.set_aspect('equal')
             plt.gcf().canvas.draw()
             plt.pause(1)
 
             row, column = rowH, columnH
+
+            
+        
+
+        self.path_msg.header.frame_id = 'map'
+        self.path_msg.header.stamp = self.get_clock().now().to_msg()
+        self.path_msg.poses = path_points_msg
+
+        self.path_ready = True
+        
 
 def main(args=None):
     rclpy.init(args=args)
