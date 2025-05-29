@@ -41,7 +41,7 @@ def euler_from_quaternion(x, y, z, w):
 class Nav2501HNode(Node):
     def __init__(self):
         super().__init__('a_star')
-        self.get_logger().info('nav_2401_hotel_node Started')
+        self.get_logger().info('a_star node Started')
 
         self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, 10)
         self.subs_odom = self.create_subscription(Odometry, '/odom', self.Odom_callback, 10)
@@ -49,6 +49,8 @@ class Nav2501HNode(Node):
 
         self.publisher_visual_path = self.create_publisher(Path, '/visual_path', 10)
         self.publisher_cmdvel = self.create_publisher(Twist, '/cmd_vel', 10)
+
+        self.pubtimer = self.create_timer(1, self.publishPath)
 
         self.goal_x = []
         self.goal_y = []
@@ -67,6 +69,7 @@ class Nav2501HNode(Node):
         self.height = msg.info.height
         self.map_data = msg.data
         self.map_ready = True
+        self.get_logger().info('Map received...')
 
     def Odom_callback(self, msg):
         self.x = msg.pose.pose.position.x
@@ -86,6 +89,24 @@ class Nav2501HNode(Node):
                 self.get_map()
             else:
                 self.get_logger().warn('Map not received yet.')
+
+    def publishPath(self):
+        path = Path()
+        poses = []
+        try:
+            for coord in self.path_coords:
+                pose = PoseStamped()
+                pose.pose.position.x = coord[0]
+                pose.pose.position.y = coord[1]
+                poses.append(pose)            
+            path.poses = poses
+            self.publisher_visual_path.publish(path)
+            self.get_logger().info(f'path published... [first pose = {path.poses[0]}]')
+        except AttributeError as e:
+            self.get_logger().warn(f'no path to publish yet... [DUE TO] : [{e}]')
+            self.publisher_visual_path.publish(path)
+            
+
 
     def get_map(self):
         data = costmap(self.map_data, self.width, self.height, self.resolution)
@@ -165,8 +186,8 @@ class Nav2501HNode(Node):
             y, x = zip(*path)
             self.ax.plot(x, y, '.', markersize=1)
 
-            path_coords = [(px * self.resolution + self.originX, py * self.resolution + self.originY) for py, px in path]
-            self.get_logger().info(f"Path: {path_coords}")
+            self.path_coords = [(px * self.resolution + self.originX, py * self.resolution + self.originY) for py, px in path]
+            self.get_logger().info(f"Path: {self.path_coords}")
 
             self.ax.set_aspect('equal')
             plt.gcf().canvas.draw()
