@@ -103,10 +103,6 @@ class Nav2501HNode(Node):
 
     def get_map(self):
 
-
-
-        
-
         data = costmap(self.map_data, self.width, self.height, self.resolution)
 
         column = int((self.x - self.originX) / self.resolution)

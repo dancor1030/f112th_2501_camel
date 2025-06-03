@@ -23,8 +23,8 @@ def generate_launch_description():
 
     #* ============= CHOOSE MAP ===============
     # world_file_name = 'trackparcial.world'
-    # world_file_name = 'map'
-    world_file_name = 'map_no_obs'
+    world_file_name = 'map'
+    # world_file_name = 'map_no_obs'
     #* ========================================
 
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
@@ -54,7 +54,7 @@ def generate_launch_description():
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
-                                   '-entity', 'ackerman_drive'],
+                                   '-entity', 'drive'],
                         output='screen')
     
 
@@ -75,8 +75,8 @@ def generate_launch_description():
         robot_description_launch,
         gazebo,
         spawn_entity,
-        dist_finder,
+        # dist_finder,
         twist_mux_node,
-        aeb_brake
+        # aeb_brake
     ])
 
