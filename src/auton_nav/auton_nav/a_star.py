@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import heapq
 
-expansion_size = 8
+expansion_size = 12
 
 def costmap(data, width, height, resolution):
     data = np.array(data).reshape(height, width)
@@ -41,12 +41,12 @@ def euler_from_quaternion(x, y, z, w):
 class Nav2501HNode(Node):
     def __init__(self):
         super().__init__('a_star')
-        self.get_logger().info('nav_2401_hotel_node Started')
+        self.get_logger().info('a_star node started...')
 
         self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, 10)
         self.subs_odom = self.create_subscription(Odometry, '/odom', self.Odom_callback, 10)
         self.subs_goalpose = self.create_subscription(PoseStamped, '/goal_pose', self.Goal_Pose_callback, QoSProfile(depth=10))
-        self.path_timer = self.create_timer(0.1, self.path_timer_func)
+        self.path_timer = self.create_timer(1, self.path_timer_func)
 
 
         self.publisher_visual_path = self.create_publisher(Path, '/path', 10)
@@ -63,6 +63,8 @@ class Nav2501HNode(Node):
         self.path_ready = False
 
         self.path_msg = Path()
+        self.path_points_msg = []
+
 
     def path_timer_func(self):
         if self.path_ready:
@@ -98,6 +100,7 @@ class Nav2501HNode(Node):
         if wp_ans.lower() == 'n': 
             if self.map_ready:
                 self.get_map()
+                self.get_logger().info('map received...')
             else:
                 self.get_logger().warn('Map not received yet.')
 
@@ -168,6 +171,7 @@ class Nav2501HNode(Node):
         return []
 
     def build_path(self, data, row, column):
+        self.get_logger().info('bulding segment...')
         for i in range(len(self.goal_x)):
             goal = (self.goal_x[i], self.goal_y[i])
             columnH = int((goal[0] - self.originX) / self.resolution)
@@ -185,7 +189,6 @@ class Nav2501HNode(Node):
 
             path_coords = [(px * self.resolution + self.originX, py * self.resolution + self.originY) for py, px in path]
             
-            path_points_msg = []
 
             for point in path_coords:
                 pose = PoseStamped()
@@ -196,10 +199,11 @@ class Nav2501HNode(Node):
                 pose.pose.position.z = 0.0
                 pose.pose.position.x = point[0]
                 pose.pose.position.y = point[1]
-                path_points_msg.append(pose)
+                self.path_points_msg.append(pose)
 
 
-            self.get_logger().info(f"Path: {path_coords}")
+            # self.get_logger().info(f"Path: {path_coords}")
+            self.get_logger().info(f"created path...")
 
             
 
@@ -214,7 +218,7 @@ class Nav2501HNode(Node):
 
         self.path_msg.header.frame_id = 'map'
         self.path_msg.header.stamp = self.get_clock().now().to_msg()
-        self.path_msg.poses = path_points_msg
+        self.path_msg.poses = self.path_points_msg
 
         self.path_ready = True
         

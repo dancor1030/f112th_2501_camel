@@ -24,7 +24,7 @@ class PurePursuit(Node):
         self.declare_parameters(
             namespace='',
             parameters=[
-                ('lookahead_distance', 0.3),
+                ('lookahead_distance', 1.0),
                 # ('wheelbase', 0.26)
                 ('wheelbase', 0.1)
             ]
@@ -107,7 +107,7 @@ class PurePursuit(Node):
 
         # Publish command
         drive_msg = Twist()
-        drive_msg.linear.x = 0.4  # Constant linear velocity
+        drive_msg.linear.x = 0.8  # Constant linear velocity
         drive_msg.angular.z = angular_z
         self.cmd_pub.publish(drive_msg)
 
