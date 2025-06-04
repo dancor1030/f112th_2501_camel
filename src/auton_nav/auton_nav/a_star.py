@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import OccupancyGrid, Odometry, Path
 from geometry_msgs.msg import PoseStamped, Twist, Pose
-from rclpy.qos import QoSProfile
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -43,7 +43,13 @@ class Nav2501HNode(Node):
         super().__init__('a_star')
         self.get_logger().info('a_star node started...')
 
-        self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, 10)
+        qos_profile_map = QoSProfile(
+            depth=10,
+            reliability=ReliabilityPolicy.RELIABLE,
+            durability=DurabilityPolicy.TRANSIENT_LOCAL
+        )
+
+        self.subs_map = self.create_subscription(OccupancyGrid, '/map', self.OccGrid_callback, qos_profile_map)
         self.subs_odom = self.create_subscription(Odometry, '/odom', self.Odom_callback, 10)
         self.subs_goalpose = self.create_subscription(PoseStamped, '/goal_pose', self.Goal_Pose_callback, QoSProfile(depth=10))
         self.path_timer = self.create_timer(1, self.path_timer_func)
